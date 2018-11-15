@@ -322,6 +322,20 @@ curl -s "http://localhost:8080/health" | jq .
 }
 ```
 
+### Configuring backend and frontend rules w. no explicit provider
+
+Traefik requires at least one provider to be active in order for the API to work. As a workaround you can use the file provider with no additional configuration:
+
+```toml
+[api]
+  entryPoint = "traefik"
+  ...
+
+[file]
+```
+
+You should then be able to issue API calls to Traefik, updating the backends and frontends.
+
 ## Metrics
 
 You can enable Traefik to export internal metrics to different monitoring systems.
